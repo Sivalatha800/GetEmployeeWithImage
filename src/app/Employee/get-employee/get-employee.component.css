@@ -1,0 +1,15 @@
+.get_emp .card {
+    width: 300px;
+}
+
+.get_emp {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    padding-top: 8px;
+    padding-left: 10px;
+    color: red;
+}

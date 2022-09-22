@@ -1,0 +1,278 @@
+<mat-card class="mdcardcontact">
+    <mat-card-header>
+        <div class="title">Employee Registration</div>
+    </mat-card-header>
+
+    <div class="mat_body">
+        <form class="example-form" [formGroup]="serverData.updateForm">
+            <mat-card-content>
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Employee Id</mat-label>
+                                    <input matInput placeholder="Employee Id" formControlName="eid"
+                                        [formControl]="$any(eid)" [errorStateMatcher]="matcher">
+                                    <mat-icon matSuffix>assignment_ind</mat-icon>
+
+                                    <mat-error
+                                        *ngIf="eid?.hasError('eid') && !eid?.hasError('required')  && eid?.errors?.['pattern']">
+                                        Please enter valid Employee Id
+                                    </mat-error>
+                                    <mat-error *ngIf="eid?.errors?.['pattern']">
+                                        Please enter numbers only
+                                    </mat-error>
+                                    <mat-error *ngIf="eid?.hasError('required')">
+                                        Employee Id is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Employee Name</mat-label>
+                                    <input matInput placeholder="Employee Name" formControlName="employeeName"
+                                        [formControl]="$any(employeeName)" [errorStateMatcher]="matcher">
+                                    <mat-icon matSuffix>perm_identity</mat-icon>
+
+                                    <mat-error
+                                        *ngIf="employeeName?.hasError('employeeName') && !employeeName?.hasError('required')  && employeeName?.errors?.['pattern']">
+                                        Please enter valid Employee Name
+                                    </mat-error>
+                                    <mat-error *ngIf="employeeName?.errors?.['pattern']">
+                                        Please enter letters only
+                                    </mat-error>
+                                    <mat-error *ngIf="employeeName?.hasError('required')">
+                                        Employee Name is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Designation</mat-label>
+                                    <mat-select formControlName="dec">
+                                        <mat-option>None</mat-option>
+                                        <mat-option *ngFor="let dec of this.dataService.designation" [value]="dec">
+                                            {{dec}}</mat-option>
+                                    </mat-select>
+
+                                    <mat-error *ngIf="dec?.hasError('dec') && !dec?.hasError('required')">
+                                        Please select Designation
+                                    </mat-error>
+                                    <mat-error *ngIf="serverData.submittedUpdate && dec?.invalid">
+                                        Designation is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Salary</mat-label>
+                                    <input matInput placeholder="Salary" formControlName="salary"
+                                        [formControl]="$any(salary)" [errorStateMatcher]="matcher">
+
+                                    <mat-error
+                                        *ngIf="salary?.hasError('salary') && !eid?.hasError('required')  && salary?.errors?.['pattern']">
+                                        Please enter valid Salary
+                                    </mat-error>
+                                    <mat-error *ngIf="salary?.errors?.['pattern']">
+                                        Please enter numbers only
+                                    </mat-error>
+                                    <mat-error *ngIf="salary?.hasError('required')">
+                                        Salary is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Joining date</mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Joining date"
+                                        formControlName="joinDate" [formControl]="$any(joinDate)"
+                                        [errorStateMatcher]="matcher">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+
+                                    <mat-error
+                                        *ngIf="joinDate?.hasError('joinDate') && !joinDate?.hasError('required')">
+                                        Please enter valid Date
+                                    </mat-error>
+                                    <mat-error *ngIf="joinDate?.errors?.['pattern']">
+                                        Date Formate MM/DD/YYYY
+                                    </mat-error>
+                                    <mat-error *ngIf="joinDate?.hasError('required')">
+                                        Joining Date is <strong>required</strong>
+                                    </mat-error>
+
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col">
+                                <div class="col gender_group">
+                                    <div>
+                                        <mat-label>Gender</mat-label>
+                                    </div>
+                                    <mat-radio-group aria-label="Gender" formControlName="gender"
+                                        [formControl]="$any(gender)">
+                                        <mat-radio-button value="Female">Female</mat-radio-button>
+                                        <mat-radio-button value="Male">Male</mat-radio-button>
+                                        <mat-error *ngIf="gender?.hasError('gender') && !gender?.hasError('required')">
+                                            Please select Gender
+                                        </mat-error>
+                                        <mat-error *ngIf="serverData.submittedUpdate && gender?.invalid">
+                                            Gender is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Email</mat-label>
+                                    <input type="email" matInput [formControl]="$any(email)"
+                                        [errorStateMatcher]="matcher" placeholder="Email" formControlName="email">
+                                    <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+                                        Please enter a valid email address
+                                    </mat-error>
+                                    <mat-error *ngIf="email?.hasError('required')">
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Mobile</mat-label>
+                                    <span matPrefix>+91 &nbsp;</span>
+                                    <input type="tel" matInput placeholder="Mobile" formControlName="mobile"
+                                        [formControl]="$any(mobile)" [errorStateMatcher]="matcher">
+                                    <mat-error
+                                        *ngIf="mobile?.hasError('mobile') && !mobile?.hasError('required')  && mobile?.errors?.['pattern']">
+                                        Please enter valid Mobile Number
+                                    </mat-error>
+                                    <mat-error *ngIf="mobile?.errors?.['pattern']">
+                                        Start with 6 or 7 or 8 or 9 and 10 numbers only
+                                    </mat-error>
+                                    <mat-error *ngIf="mobile?.hasError('required')">
+                                        Mobile Number is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-4" *ngIf="serverData.previoueImgShow">
+                        <div class="emp_photo">
+                            <mat-label>Employee Photo</mat-label><br>
+                            <img [src]="serverData.editEmpDetails.photoURL" alt=""><br>
+
+                            <button type="button" class="btn btn-primary mt-2 ps-3" (click)="changePhoto()">
+                                Change Photo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-4" *ngIf="serverData.uploadImgShow">
+                        <div class="photo">
+                            <mat-label>Select Photo</mat-label>
+                            <input #file type="file" accept='.png, .jpg, .jpeg' (change)="preview(file.files)"
+                                class="photo_input" formControlName="photoURL" />
+
+                            <mat-error *ngIf="photoURL?.hasError('qualify') && !photoURL?.hasError('required')">
+                                Please Select .jpg or .jpeg or .png format only
+                            </mat-error>
+                            <mat-error *ngIf="serverData.submittedUpdate && photoURL?.invalid">
+                                Photo is <strong>required</strong>
+                            </mat-error>
+
+                            <button type="button" class="btn btn-outline-danger mt-3" (click)="onCancel()"
+                                *ngIf="!empService.imgURL">
+                                Cancel
+                            </button>
+                        </div>
+
+                        <div class="photo_preview">
+                            <span *ngIf="empService.message">{{empService.message}}</span>
+                            <img [src]="empService.imgURL" *ngIf="empService.imgURL">
+                            <div class="mt-2 ps-5">
+                                <button type="button" class="btn btn-success" (click)="uploadingImg()"
+                                    *ngIf="empService.imgURL">
+                                    Upload Photo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-4">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Qualification</mat-label>
+                            <mat-select formControlName="qualify">
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let qualify of this.dataService.qualification" [value]="qualify">
+                                    {{qualify}}
+                                </mat-option>
+                            </mat-select>
+
+                            <mat-error *ngIf="qualify?.hasError('qualify') && !qualify?.hasError('required')">
+                                Please select Qualification
+                            </mat-error>
+                            <mat-error *ngIf="serverData.submittedUpdate && qualify?.invalid">
+                                Qualification is <strong>required</strong>
+                            </mat-error>
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-8">
+                        <div>
+                            <mat-label>Languages known</mat-label>
+                        </div>
+                        <div class="example-section">
+                            <span *ngFor="let language of languagesArray.controls; let i = index"
+                                formArrayName="language">
+                                <mat-checkbox class="example-margin" [formControlName]="i">
+                                    {{this.dataService.languagesData[i].name}}
+                                </mat-checkbox>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <button mat-raised-button color="primary" (click)="onUpDate(serverData.updateForm.value)">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button mat-raised-button color="accent">
+                            Reset Form
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </form>
+    </div>
+</mat-card>

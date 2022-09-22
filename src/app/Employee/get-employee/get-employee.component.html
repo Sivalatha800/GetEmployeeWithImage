@@ -1,0 +1,30 @@
+<div class="get_emp">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="serverData.getParticularEmp">
+                <label>Employee Id</label>
+                <input type="number" class="form-control mt-2" placeholder="Enter Employee Id"
+                    formControlName="empId" />
+                <div class="error">
+                    <div *ngIf="empId?.hasError('empId') && !empId?.hasError('required') && empId?.errors?.['pattern']">
+                        Enter Valid Employee Id
+                    </div>
+                    <div *ngIf="serverData.submittedSingleData && empId?.invalid">
+                        Employee Id is Required
+                    </div>
+                    <div *ngIf=" empId?.errors?.['pattern']">
+                        Please Enter Numbers Only
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-primary mt-4"
+                    (click)="getDetails(serverData.getParticularEmp.value)">Get Details</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="serverData.displayEmpDetails">
+    <div class="d-grid gap-4 d-md-flex justify-content-center mt-4">
+        <button type="button" class="btn btn-warning" (click)="printPage()">Print Details</button>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="display_emp pb-5">
+    <div class="card">
+        <div class="card-title">Employee Details</div>
+        <div class="card-body">
+            <div class="row row_gap">
+                <div class="col-5 ">
+                    <img [src]="serverData.singleEmpData.photoURL" alt="Employee Photo">
+                </div>
+                <div class="col flex_content">
+                    <div class="col_flex">
+                        <h4>Employee Id:</h4> {{serverData.singleEmpData.eid}}
+                    </div>
+                    <div class="col_flex">
+                        <h4>Employee Name:</h4> {{serverData.singleEmpData.employeeName}}
+                    </div>
+                    <div class="col_flex">
+                        <h4>Designation:</h4> {{serverData.singleEmpData.dec}}
+                    </div>
+                    <div class="col_flex">
+                        <h4>Salary:</h4> {{serverData.singleEmpData.salary}}
+                    </div>
+                    <div class="col_flex">
+                        <h4>Joining Date:</h4> {{serverData.singleEmpData.joinDate}}
+                    </div>
+                </div>
+            </div>
+            <div class="row row_gap">
+                <h2>Personal Details</h2>
+                <div class="row">
+                    <div class="col col_gap col_flex">
+                        <h4>Gender:</h4> {{serverData.singleEmpData.gender}}
+                    </div>
+                    <div class="col col_gap col_flex">
+                        <h4>Qualification:</h4> {{serverData.singleEmpData.qualify}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col_gap lan_flex col_flex">
+                        <h4>Languages Known:</h4>
+
+                        <div *ngFor="let language of serverData.singleEmpData.language">
+                            &nbsp; {{language}}, &nbsp;
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row row_gap ">
+                <h2>Contact Details</h2>
+                <div class="row ">
+                    <div class="col col_gap col_flex">
+                        <h4>Mobile:</h4> {{serverData.singleEmpData.mobile}}
+                    </div>
+                    <div class="col col_gap col_flex">
+                        <h4>Email:</h4> {{serverData.singleEmpData.email}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

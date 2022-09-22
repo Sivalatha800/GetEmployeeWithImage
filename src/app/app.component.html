@@ -1,0 +1,21 @@
+<div>
+  <app-buttons-menu></app-buttons-menu>
+</div>
+<div *ngIf="serverData.registerEmployeeShow">
+  <app-create-employee></app-create-employee>
+</div>
+<div *ngIf="serverData.viewEmployeeListShow">
+  <app-employee-list></app-employee-list>
+</div>
+
+<div *ngIf="serverData.getParticularEmployeeShow">
+  <app-get-employee></app-get-employee>
+</div>
+
+<div *ngIf="serverData.editEmpShow">
+  <app-update-employee></app-update-employee>
+</div>
+
+<div *ngIf="serverData.displayEmpDetails">
+  <app-print-page></app-print-page>
+</div>

@@ -1,0 +1,95 @@
+.mdcardcontact {
+    box-shadow: none;
+    margin: 20px auto;
+    width: 900px;
+    border: 1px solid #616161;
+    border-radius: 5px;
+}
+
+
+.mat-card-header {
+    background-color: #e6e6e6;
+    display: block;
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+
+.title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: right;
+    padding-left: 50px;
+    font-size: 18px;
+    color: green;
+}
+
+.mat-card {
+    padding: 0;
+}
+
+.mat-card-content {
+    padding: 0 20px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.gender_group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mat-radio-button {
+    padding-right: 20px;
+}
+
+.row {
+    padding-top: 5px;
+    --bs-gutter-x: 0;
+}
+
+.mat-icon {
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    color: #757575;
+    margin-left: 7px;
+    margin-right: 3px;
+}
+
+.photo {
+    padding-top: 25px;
+}
+
+.photo_input {
+    padding-top: 10px;
+}
+
+input [type='file'] {
+    padding: 10px;
+    color: #157347;
+}
+
+.photo_preview {
+    padding-top: 10px;
+}
+
+.photo_preview span {
+    color: red;
+}
+
+.photo_preview img {
+    height: 200px;
+}
+
+.example-section {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}

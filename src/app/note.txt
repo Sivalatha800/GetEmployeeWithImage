@@ -1,0 +1,22 @@
+onEdit() {
+    this.submitted = true;
+    if (this.studentEditForm.invalid) {
+      return;
+    } else {
+      update(ref(this.db, 'Students/' + this.ss.editStudentData.rollNo), {
+        studentName: this.studentEditForm.value.studentName,
+        email: this.studentEditForm.value.email,
+        mobile: this.studentEditForm.value.mobile,
+        gender: this.studentEditForm.value.gender,
+        fatherName: this.studentEditForm.value.fatherName,
+        motherName: this.studentEditForm.value.motherName,
+        address: this.studentEditForm.value.address,
+      });
+
+      this.studentEditForm.reset();
+      this.ss.getData();
+      this.dialogRef.close();
+      this.ss.openDialogUpdate();
+      // this.message = 'Student Updated Successfully';
+    }
+  }

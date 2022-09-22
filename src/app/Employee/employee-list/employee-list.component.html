@@ -1,0 +1,58 @@
+<div class="mt-4 p-2">
+    <div class="table_data">
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Employee Id</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Joining Date</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Qualification</th>
+                    <th scope="col">Languages Known</th>
+                    <th scope="col">Employee Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of serverData.EmployeeList; let i = index; ">
+                    <td>{{employee.eid}}</td>
+                    <td>{{employee.employeeName}}</td>
+                    <td>{{employee.dec}}</td>
+                    <td>{{employee.salary | currency : 'INR'}}</td>
+                    <td>{{employee.joinDate}}</td>
+                    <td>{{employee.gender}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.mobile}}</td>
+                    <td>{{employee.qualify}}</td>
+                    <td>{{employee.language}}</td>
+                    <td>
+                        <div>
+                            <img [src]="employee.photoURL" alt="Employee Image" class="employee_image">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div>
+
+                            <div>
+                                <button mat-stroked-button color="primary" (click)="onEdit(employee)">
+                                    Edit
+                                </button>
+                            </div>
+
+                            &nbsp;
+
+                            <button mat-stroked-button color="warn" (click)="deleteEmp(employee)">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
